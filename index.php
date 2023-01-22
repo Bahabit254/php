@@ -1,24 +1,7 @@
 <?php
-   class climate {
-    public static $conditions = ['cold', 'mild', 'warm'];
+   if(isset($_POST['submit']))
 
-    public static function convertToFarhrenheit($value) {
-        return $value * 9 / 5 + 32;
-    }
-
-    public static function determineCondition($f) {
-        if ($f < 40){
-            return self::$conditions[0];
-        }else if ($f < 70){
-            return self::$conditions[1];
-        }else {
-            return self::$conditions[2];
-        }
-    }
-   }
-
-   echo climate::determineCondition(50);
-
+   echo "Submitted"
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +13,15 @@
     <title>PHP OOP PROGRAMMING</title>
 </head>
 <body>
-    
+    <div class="new-user">
+        <h1>Sign Up</h1>
+        <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST">
+            <label>Username</label>
+            <input type="text" name="username">
+            <label>Email</label>
+            <input type="email" name="email">
+            <input type="submit" name="submit" value="submit">
+        </form>
+    </div>
 </body>
 </html>
