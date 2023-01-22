@@ -1,7 +1,7 @@
 <?php
     class User {
         public $username;
-        public $email;
+        private $email;
 
         public function __construct($username, $email) {
             $this->username = $username;
@@ -9,7 +9,7 @@
         }
 
         public function addFriend() {
-            return "$this->username added a new friend";
+            return "$this->email added a new friend";
         }
 
     }
@@ -19,18 +19,18 @@
     $userThree = new User('mario', 'mario@example.com');
 
     echo $userOne->username . '<br>';
-    echo $userOne->email . '<br>';
+    // echo $userOne->email . '<br>'; >command will return error as email is private
     echo $userOne->addFriend() . '<br>';
 
     // $userTwo->username = 'Fraiser';
     // $userTwo->email = 'fray@example.com';
 
     echo $userTwo->username . '<br>';
-    echo $userTwo->email . '<br>';
+    // echo $userTwo->email . '<br>'; >command will return error as email is private
     echo $userTwo->addFriend() . '<br>';
 
     echo $userThree->username . '<br>';
-    echo $userThree->email . '<br>';
+    // echo $userThree->email . '<br>'; >command will return error as email is private
     echo $userThree->addFriend() . '<br>';
 
     // print_r(get_class_vars('User'));
