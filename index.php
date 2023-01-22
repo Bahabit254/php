@@ -1,7 +1,8 @@
 <?php
     class User {
         public $username;
-        private $email;
+        // private $email; to override admin change to protected
+        protected $email;
         public $role = 'member';
 
         public function __construct($username, $email) {
@@ -63,6 +64,7 @@
 
     echo $userOne->message() . '<br>';
     // echo $userFour->message() . '<br>';  Will throw an error
+    echo $userFour->message() . '<br>';
     // print_r(get_class_vars('User'));
     // print_r(get_class_methods('User'));
 
