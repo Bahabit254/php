@@ -1,11 +1,31 @@
 <?php
     class User {
+        public $username = 'Brandon';
+        public $email = 'joe@example.com';
+
+        public function addFriend() {
+            return "$this->username added a new friend";
+        }
 
     }
 
     $userOne = new User();
     $userTwo = new User();
-    echo 'the class is ' . get_class($userOne)
+
+    echo $userOne->username . '<br>';
+    echo $userOne->email . '<br>';
+    echo $userOne->addFriend() . '<br>';
+
+    $userTwo->username = 'Fraiser';
+    $userTwo->email = 'fray@example.com';
+
+    echo $userTwo->username . '<br>';
+    echo $userTwo->email . '<br>';
+    echo $userTwo->addFriend() . '<br>';
+
+
+    // print_r(get_class_vars('User'));
+    // print_r(get_class_methods('User'));
 
 ?>
 
