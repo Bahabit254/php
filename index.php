@@ -1,72 +1,23 @@
 <?php
-    class User {
-        public $username;
-        // private $email; to override admin change to protected
-        protected $email;
-        public $role = 'member';
+   class climate {
+    public static $conditions = ['cold', 'mild', 'warm'];
 
-        public function __construct($username, $email) {
-            $this->username = $username;
-            $this->email = $email;
-        }
-
-        public function addFriend() {
-            return "$this->email added a new friend";
-        }
-
-        public function message() {
-            return "$this->email sent a new message";
-        }
-
-        // getters
-        public function getEmail() {
-            return $this->email;
-        }
-
-
-        // setters
-        public function setEmail($email) {
-            if (strpos($email, '@') > -1) {
-                $this->email = $email;
-            }
-        }
-
-    
-    }
-    
-    class AdminUser extends User {
-        public $level;
-        public $role = 'admin';
-
-        public function __construct($username, $email, $level) {
-            $this->level = $level;
-            parent::__construct($username, $email);
-        }
-        
-        public function message() {
-            return "$this->email sent a new message";
-        } // Trial on admin priveledges
+    public static function convertToFarhrenheit($value) {
+        return $value * 9 / 5 + 32;
     }
 
-    $userOne = new User('brosnan', 'brosnan@example.com');
-    $userTwo = new User('pierce', 'pierce@example.com');
-    // $userThree = new User('mario', 'mario@example.com');
-    $userFour = new AdminUser('bronco', 'bronco@example.com', 3);
+    public static function determineCondition($f) {
+        if ($f < 40){
+            return self::$conditions[0];
+        }else if ($f < 70){
+            return self::$conditions[1];
+        }else {
+            return self::$conditions[2];
+        }
+    }
+   }
 
-    // echo $userOne->username . '<br>';
-    // echo $userOne->email . '<br>'; >command will return error as email is private
-    // echo $userOne->addFriend() . '<br>';
-    // $userOne->setEmail('bruno@example.com');
-
-    // echo $userFour->username . '<br>';
-    // echo $userFour->getEmail() . '<br>';
-    // echo $userFour->level . '<br>';
-
-    echo $userOne->message() . '<br>';
-    // echo $userFour->message() . '<br>';  Will throw an error
-    echo $userFour->message() . '<br>';
-    // print_r(get_class_vars('User'));
-    // print_r(get_class_methods('User'));
+   echo climate::determineCondition(50);
 
 ?>
 
