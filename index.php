@@ -1,40 +1,23 @@
 <?php
-    class User {
-        public $username;
-        private $email;
+   class climate {
+    public static $conditions = ['cold', 'mild', 'warm'];
 
-        public function __construct($username, $email) {
-            $this->username = $username;
-            $this->email = $email;
-        }
-
-        public function addFriend() {
-            return "$this->email added a new friend";
-        }
-
+    public static function convertToFarhrenheit($value) {
+        return $value * 9 / 5 + 32;
     }
 
-    $userOne = new User('brosnan', 'brosnan@example.com');
-    $userTwo = new User('pierce', 'pierce@example.com');
-    $userThree = new User('mario', 'mario@example.com');
+    public static function determineCondition($f) {
+        if ($f < 40){
+            return self::$conditions[0];
+        }else if ($f < 70){
+            return self::$conditions[1];
+        }else {
+            return self::$conditions[2];
+        }
+    }
+   }
 
-    echo $userOne->username . '<br>';
-    // echo $userOne->email . '<br>'; >command will return error as email is private
-    echo $userOne->addFriend() . '<br>';
-
-    // $userTwo->username = 'Fraiser';
-    // $userTwo->email = 'fray@example.com';
-
-    echo $userTwo->username . '<br>';
-    // echo $userTwo->email . '<br>'; >command will return error as email is private
-    echo $userTwo->addFriend() . '<br>';
-
-    echo $userThree->username . '<br>';
-    // echo $userThree->email . '<br>'; >command will return error as email is private
-    echo $userThree->addFriend() . '<br>';
-
-    // print_r(get_class_vars('User'));
-    // print_r(get_class_methods('User'));
+   echo climate::determineCondition(50);
 
 ?>
 
