@@ -2,6 +2,7 @@
     class User {
         public $username;
         private $email;
+        public $role = 'member';
 
         public function __construct($username, $email) {
             $this->username = $username;
@@ -10,6 +11,10 @@
 
         public function addFriend() {
             return "$this->email added a new friend";
+        }
+
+        public function message() {
+            return "$this->email sent a new message";
         }
 
         // getters
@@ -30,11 +35,16 @@
     
     class AdminUser extends User {
         public $level;
+        public $role = 'admin';
 
         public function __construct($username, $email, $level) {
             $this->level = $level;
             parent::__construct($username, $email);
         }
+        
+        public function message() {
+            return "$this->email sent a new message";
+        } // Trial on admin priveledges
     }
 
     $userOne = new User('brosnan', 'brosnan@example.com');
@@ -47,10 +57,12 @@
     // echo $userOne->addFriend() . '<br>';
     // $userOne->setEmail('bruno@example.com');
 
-    echo $userFour->username . '<br';
-    echo $userFour->getEmail() . '<br';
-    echo $userFour->level . '<br';
+    // echo $userFour->username . '<br>';
+    // echo $userFour->getEmail() . '<br>';
+    // echo $userFour->level . '<br>';
 
+    echo $userOne->message() . '<br>';
+    // echo $userFour->message() . '<br>';  Will throw an error
     // print_r(get_class_vars('User'));
     // print_r(get_class_methods('User'));
 
