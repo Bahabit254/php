@@ -12,26 +12,31 @@
             return "$this->email added a new friend";
         }
 
+        // getters
+        public function getEmail() {
+            return $this->email;
+        }
+
+
+        // setters
+        public function setEmail($email) {
+            if (strpos($email, '@') > -1) {
+                $this->email = $email;
+            }
+        }
+
     }
 
     $userOne = new User('brosnan', 'brosnan@example.com');
     $userTwo = new User('pierce', 'pierce@example.com');
     $userThree = new User('mario', 'mario@example.com');
 
-    echo $userOne->username . '<br>';
+    // echo $userOne->username . '<br>';
     // echo $userOne->email . '<br>'; >command will return error as email is private
-    echo $userOne->addFriend() . '<br>';
+    // echo $userOne->addFriend() . '<br>';
+    $userOne->setEmail('bruno@example.com');
 
-    // $userTwo->username = 'Fraiser';
-    // $userTwo->email = 'fray@example.com';
-
-    echo $userTwo->username . '<br>';
-    // echo $userTwo->email . '<br>'; >command will return error as email is private
-    echo $userTwo->addFriend() . '<br>';
-
-    echo $userThree->username . '<br>';
-    // echo $userThree->email . '<br>'; >command will return error as email is private
-    echo $userThree->addFriend() . '<br>';
+    echo $userOne->getEmail() . '<br';
 
     // print_r(get_class_vars('User'));
     // print_r(get_class_methods('User'));
