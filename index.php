@@ -1,7 +1,10 @@
 <?php
-   if(isset($_POST['submit']))
+    require('user.php');
+   if(isset($_POST['submit'])){
+    $validation = new UserValidation($_POST);
+    $errors = $validation->validateForm();
+   }
 
-   echo "Submitted"
 ?>
 
 <!DOCTYPE html>
@@ -17,9 +20,12 @@
         <h1>Sign Up</h1>
         <form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST">
             <label>Username</label>
-            <input type="text" name="username">
+            <input type="text" name="username" value="<?php echo htmlspecialchars($_POST['username']) ?? '' ?>">
+            <div>
+                <?php echo $errors['username'] ?? '' ?>
+            </div>
             <label>Email</label>
-            <input type="email" name="email">
+            <input type="text" name="email" value="<?php echo htmlspecialchars($_POST['email']) ?? '' ?>">
             <input type="submit" name="submit" value="submit">
         </form>
     </div>
